@@ -88,7 +88,7 @@ iosdiff - Cisco IOS Config Diff Utility
 
 =head1 VERSION
 
-version 1.112140
+version 1.112141
 
 =head1 SYNOPSIS
 
@@ -120,7 +120,7 @@ leading text.
 The C<iosdiff> command takes only two arguments, which are the names of the
 two files to diff.
 
- $> iosdiff from_this_file to_this_file
+ $> iosdiff from-this-file to-this-file
 
 Lines in the files which are comments (begin with "C<!>") will be stripped
 from the file before the comparison is made.
@@ -144,7 +144,7 @@ line arguments). If there's an IP in the file name, it is resolved to a host
 name using the DNS and printed. Otherwise the IP is used, but if there's no IP
 then the file name itself is used.
 
- $> iosdiff -B from_this_file to_this_file
+ $> iosdiff -B from-this-file to-this-file
 
 =back
 

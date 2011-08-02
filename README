@@ -2,7 +2,7 @@ NAME
     iosdiff - Cisco IOS Config Diff Utility
 
 VERSION
-    version 1.112140
+    version 1.112141
 
 SYNOPSIS
      $> iosdiff 192.0.2.1 192.0.2.1.new
@@ -31,7 +31,7 @@ USAGE
     The "iosdiff" command takes only two arguments, which are the names of
     the two files to diff.
 
-     $> iosdiff from_this_file to_this_file
+     $> iosdiff from-this-file to-this-file
 
     Lines in the files which are comments (begin with ""!"") will be
     stripped from the file before the comparison is made.
@@ -53,7 +53,7 @@ USAGE
         Otherwise the IP is used, but if there's no IP then the file name
         itself is used.
 
-         $> iosdiff -B from_this_file to_this_file
+         $> iosdiff -B from-this-file to-this-file
 
 AUTHOR
     Oliver Gorwits <oliver@cpan.org>

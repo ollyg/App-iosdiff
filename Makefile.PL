@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     'Net::DNS' => '0',
     'Regexp::Common' => '0'
   },
-  'VERSION' => '1.112140',
+  'VERSION' => '1.112141',
   'test' => {
     'TESTS' => ''
   }

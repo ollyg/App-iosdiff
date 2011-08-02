@@ -24,4 +24,4 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=App-iosdiff
   homepage: https://github.com/ollyg/App-iosdiff/wiki
   repository: git://github.com/ollyg/App-iosdiff.git
-version: 1.112140
+version: 1.112141
