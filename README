@@ -1,0 +1,66 @@
+NAME
+    iosdiff - Cisco IOS Config Diff Utility
+
+VERSION
+    version 1.112140
+
+SYNOPSIS
+     $> iosdiff 192.0.2.1 192.0.2.1.new
+
+     ~~~ Config diff for device 192.0.2.1
+     ===================================================================
+     - snmp-server enable traps ccme
+     + snmp-server enable traps srst
+
+DESCRIPTION
+    The "iosdiff" program will intelligently diff two files which are in
+    Cisco IOS-style configuration file format.
+
+    Whilst an ordinary diff works on IOS-style configuration files, it
+    doesn't show the context in a useful way. For example if one line
+    changes within an interface configuration, you're likely not to see the
+    interface name in a standard 3-line contextual diff. This program
+    improves that by showing the full context of any difference.
+
+    In terms of IOS-style configuration, this context means either the
+    "section" such as an interface or class-map (a header with indented
+    lines), or the command group such as an access control list, where the
+    lines share common leading text.
+
+USAGE
+    The "iosdiff" command takes only two arguments, which are the names of
+    the two files to diff.
+
+     $> iosdiff from_this_file to_this_file
+
+    Lines in the files which are comments (begin with ""!"") will be
+    stripped from the file before the comparison is made.
+
+  Options
+    "-B"
+        Use this option to *suppress* the banner which is printed before the
+        diff output. Of course, no banner is printed anyway if there's no
+        difference between the two files being compared. The banner looks
+        like:
+
+         ~~~ Config diff for device 192.0.2.1
+         ===================================================================
+
+        The device name in the banner depends on the name of the "right
+        hand" file provided for comparing (that is, the second file name
+        passed in the command line arguments). If there's an IP in the file
+        name, it is resolved to a host name using the DNS and printed.
+        Otherwise the IP is used, but if there's no IP then the file name
+        itself is used.
+
+         $> iosdiff -B from_this_file to_this_file
+
+AUTHOR
+    Oliver Gorwits <oliver@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by University of Oxford.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

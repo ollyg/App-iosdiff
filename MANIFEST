@@ -1,0 +1,9 @@
+Changes
+LICENSE
+MANIFEST
+META.json
+META.yml
+Makefile.PL
+README
+bin/iosdiff
+lib/App/iosdiff.pm
