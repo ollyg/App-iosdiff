@@ -1,0 +1,71 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings FATAL => 'all';
+
+use File::Slurp;
+use Regexp::Common 'net';
+use Net::DNS; # core
+use App:iosdiff ();
+
+sub help {
+    print <<ENDHELP
+    $0 - Cisco IOS Config Diff Utility
+
+    usage:
+    $0 [options] left_file right_file
+
+    currently there are no defined options.
+ENDHELP
+}
+
+if (scalar @ARGV < 2) {
+    help();
+    exit 1;
+}
+
+my $right_file = pop @ARGV;
+my $left_file  = pop @ARGV;
+
+defined $left_file and -r $left_file
+    or die "missing left file\n";
+
+defined $right_file and -r $right_file
+    or die "missing right file\n";
+
+my $device = $right_file; # should be an option
+
+# list of devices for which we do not want a diff
+my @device_ignore =
+        read_file( '/etc/iosdiff-ignore', err_mode => 'quiet' );
+
+exit 0 if grep {m/^$device\n?$/} @device_ignore;
+
+my @output = App::iosdiff::diff({
+    left => $left_file,
+    right => $right_file,
+});
+
+if ($device  =~ m/($RE{net}{IPv4})/) {
+    my $res   = Net::DNS::Resolver->new;
+    my $query = $res->search($device);
+    
+    if ($query) {
+        foreach my $rr ($query->answer) {
+            next unless $rr->type eq 'PTR';
+            $device = $rr->ptrdname;
+            last;
+        }
+    }
+    else {
+        $device = "[$device]";
+    }
+}
+
+print "~~~ Config diff for device $device\n";
+print '=' x 67, "\n";
+print @output;
+exit 0;
+
+# ABSTRACT: Cisco IOS Config Diff Utility
+# PODNAME: iosdiff
