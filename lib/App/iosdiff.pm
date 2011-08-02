@@ -12,7 +12,11 @@ use base 'Exporter';
 our @EXPORT_OK = qw/ diff /;
 
 sub diff {
-    my ($left_file, $right_file) = @_;
+    my $args = shift;
+    die "args should be a hashref"
+        unless ref $args eq ref {};
+
+    my ($left_file, $right_file) = ($args->{left}, $args->{right});
     die "two args: left and right files\n"
         unless defined $left_file and -r $left_file
                and defined $right_file and -r $right_file;
@@ -143,3 +147,49 @@ sub generate_lookups {
 1;
 
 # ABSTRACT: Cisco IOS Config Diff
+
+=head1 SYNOPSIS
+
+ use App::iosdiff qw/diff/;
+ 
+ my @output = diff({
+     left  => 'from_this_file',
+     right => 'to_this_file',
+ });
+ 
+ if (scalar @output == 0) {
+     print "no differences!\n";
+ }
+ else {
+     print @output;
+ }
+
+=head1 DESCRIPTION
+
+This library provides one subroutine to run an intelligent context aware diff
+between two files in Cisco IOS-style configuration format.
+
+Whilst an ordinary diff works on IOS-style configuration files, it doesn't
+show the context in a useful way. For example if one line changes within an
+interface configuration, you're likely not to see the interface name in a
+standard 3-line contextual diff. This program improves that by showing the
+full context of any difference.
+
+In terms of IOS-style configuration, this context means either the "section"
+such as an interface or class-map (a header with indented lines), or the
+command group such as an access control list, where the lines share common
+leading text.
+
+=head1 USAGE
+
+See the above L</SYNOPSIS> for an example.
+
+Lines in the files which are comments (begin with "C<!>") will be stripped
+from the file before the comparison is made.
+
+=head1 SEE ALSO
+
+The L<iosdiff> program is bundled with this library and provides a command
+line interface for printing the differences between two files.
+
+=cut
