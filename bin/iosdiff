@@ -6,17 +6,17 @@ use warnings FATAL => 'all';
 use File::Slurp;
 use Regexp::Common 'net';
 use Net::DNS; # core
-use App:iosdiff ();
+use App::iosdiff ();
 
 sub help {
     print <<ENDHELP
-    $0 - Cisco IOS Config Diff Utility
+    iosdiff - Cisco IOS Config Diff Utility
 
     usage:
-    $0 [options] left_file right_file
+        iosdiff [options] left_file right_file
 
     options:
-    -B          suppress printing of banner
+        -B          suppress printing of banner
 ENDHELP
 }
 
