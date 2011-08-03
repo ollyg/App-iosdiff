@@ -1,5 +1,3 @@
-#!/usr/bin/perl
-
 use strict;
 use warnings FATAL => 'all';
 
@@ -88,7 +86,7 @@ iosdiff - Cisco IOS Config Diff Utility
 
 =head1 VERSION
 
-version 1.112141
+version 1.112150
 
 =head1 SYNOPSIS
 
@@ -139,7 +137,7 @@ between the two files being compared. The banner looks like:
  ===================================================================
 
 The device name in the banner depends on the name of the "right hand" file
-provided for comparing (that is, the second file name passed in the command
+provided for comparison (that is, the second file name passed in the command
 line arguments). If there's an IP in the file name, it is resolved to a host
 name using the DNS and printed. Otherwise the IP is used, but if there's no IP
 then the file name itself is used.
@@ -147,6 +145,46 @@ then the file name itself is used.
  $> iosdiff -B from-this-file to-this-file
 
 =back
+
+=head1 CONFIGURATION
+
+You can provide a file with a list of devices to ignore. If the device having
+its configuration diffed is mentioned in the file, the program exits silently.
+
+The name of the device is the "right hand" file provided for comparison (that
+is, the second file name passed in the command line arguments). For RANCID,
+not that this will probably have a suffix of "C<.new>".
+
+The file used for this list is C</etc/iosdiff-ignore>. Patches are welcome to
+make this feature smarter. Its contents should be one name per line, only.
+
+=head1 RANCID INTEGRATION
+
+If you use RANCID with Subversion, edit the RANCID user's
+C<~/.subversion/config> to contain the following line:
+
+ diff-cmd=iosdiff
+
+The effect will be that this program is called instead of the system diff
+utility, and smarter output produced in email notices.
+
+=head1 CAVEATS
+
+=head2 RANCID
+
+Unfortunately where the difference between files is within the comments lines,
+RANCID will emit a notice about the difference, but you'll get nothing more.
+That's because comments are ignored by this program. The fix would be to patch
+RANCID to spot when the diff program emits no output.
+
+Also, if you use RANCID for devices which do not save IOS-style configuration
+files, then setting C<diff-cmd=iosdiff> will probably not be as useful. There
+is no workaround, as it's a global setting for RANCID.
+
+=head2 Use with C<patch> Utility
+
+The contextual diff output produced by this program is not suitable as input
+to the C<patch> utility.
 
 =head1 AUTHOR
 

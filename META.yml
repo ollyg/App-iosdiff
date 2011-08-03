@@ -18,10 +18,8 @@ requires:
   File::Slurp: 0
   File::Temp: 0
   List::Util: 0
-  Net::DNS: 0
-  Regexp::Common: 0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=App-iosdiff
   homepage: https://github.com/ollyg/App-iosdiff/wiki
   repository: git://github.com/ollyg/App-iosdiff.git
-version: 1.112141
+version: 1.112150
