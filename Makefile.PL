@@ -26,9 +26,11 @@ my %WriteMakefileArgs = (
     'Exporter' => '0',
     'File::Slurp' => '0',
     'File::Temp' => '0',
-    'List::Util' => '0'
+    'List::Util' => '0',
+    'Net::DNS' => '0',
+    'Regexp::Common' => '0'
   },
-  'VERSION' => '1.112150',
+  'VERSION' => '1.112160',
   'test' => {
     'TESTS' => ''
   }

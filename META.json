@@ -25,7 +25,9 @@
             "Exporter" : 0,
             "File::Slurp" : 0,
             "File::Temp" : 0,
-            "List::Util" : 0
+            "List::Util" : 0,
+            "Net::DNS" : 0,
+            "Regexp::Common" : 0
          }
       }
    },
@@ -41,6 +43,6 @@
          "web" : "https://github.com/ollyg/App-iosdiff"
       }
    },
-   "version" : "1.112150"
+   "version" : "1.112160"
 }
 

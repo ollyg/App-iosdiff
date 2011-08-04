@@ -1,6 +1,6 @@
 package App::iosdiff;
 BEGIN {
-  $App::iosdiff::VERSION = '1.112150';
+  $App::iosdiff::VERSION = '1.112160';
 }
 
 use strict;
@@ -161,7 +161,7 @@ App::iosdiff - Cisco IOS Config Diff
 
 =head1 VERSION
 
-version 1.112150
+version 1.112160
 
 =head1 SYNOPSIS
 

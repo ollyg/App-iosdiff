@@ -2,7 +2,7 @@ NAME
     iosdiff - Cisco IOS Config Diff Utility
 
 VERSION
-    version 1.112150
+    version 1.112160
 
 SYNOPSIS
      $> iosdiff 192.0.2.1 192.0.2.1.new
