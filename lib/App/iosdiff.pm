@@ -132,7 +132,7 @@ sub generate_lookups {
 
         if ("$key1 $key2" ne $stanza and $i < $#lines) {
             $stanza = $key1;
-            $stanza = "$key1 $key2" if $lines[$i+1] =~ m/^$key1 $key2/;
+            $stanza = "$key1 $key2" if $lines[$i+1] =~ m/^\Q$key1\E \Q$key2\E/;
         }
         else {
             # last line special case
