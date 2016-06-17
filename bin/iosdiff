@@ -8,7 +8,7 @@ use Regexp::Common 'net';
 use Net::DNS; # core
 use App::iosdiff ();
 
-our $VERSION = 1.200000;
+our $VERSION = 1.200001;
 
 sub help {
     print <<ENDHELP

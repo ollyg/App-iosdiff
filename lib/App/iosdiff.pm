@@ -1,6 +1,6 @@
 package App::iosdiff;
 BEGIN {
-  $App::iosdiff::VERSION = '1.200000';
+  $App::iosdiff::VERSION = '1.200001';
 }
 
 use strict;
