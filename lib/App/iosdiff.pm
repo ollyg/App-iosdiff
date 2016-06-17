@@ -1,6 +1,6 @@
 package App::iosdiff;
 BEGIN {
-  $App::iosdiff::VERSION = '1.112160';
+  $App::iosdiff::VERSION = '1.200000';
 }
 
 use strict;
@@ -159,10 +159,6 @@ __END__
 
 App::iosdiff - Cisco IOS Config Diff
 
-=head1 VERSION
-
-version 1.112160
-
 =head1 SYNOPSIS
 
  use App::iosdiff qw/diff/;
@@ -213,7 +209,7 @@ Oliver Gorwits <oliver@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by University of Oxford.
+This software is copyright (c) 2016 by University of Oxford.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
